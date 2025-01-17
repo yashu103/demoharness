@@ -1,1 +1,51 @@
-
+pipeline:
+  name: Demo Pipeline Github connect
+  identifier: demo_pipeline_github
+  projectIdentifier: default_project
+  orgIdentifier: default
+  properties:
+    ci:
+      codebase:
+        connectorRef: Githubconnect  # Replace with your actual GitHub connector
+        repoName: demoharness
+        build: <+input>                # Input field for branch
+  stages:
+    - stage:
+        name: Build Stage
+        identifier: build_stage
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          caching:
+            enabled: true
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Docker
+            spec: {}
+          execution:
+            steps:
+              - step:
+                  name: Check Node Version
+                  identifier: check_node_version
+                  type: Run
+                  spec:
+                    shell: Bash
+                    command: node --version
+                    image: node:16  # A Node.js 16 image is used to ensure compatibility
+                    connectorRef: account.harnessImage
+                    delegateSelectors:
+                      - docker-delegate-new
+              - step:
+                  name: Check Cypress Version
+                  identifier: check_cypress_version
+                  type: Run
+                  spec:
+                    shell: Bash
+                    command: cypress --version
+                    image: cypress/included:10.0.0  # Cypress image with version 10.0.0
+                    connectorRef: account.harnessImage
+                    delegateSelectors:
+                      - docker-delegate-new
