@@ -37,6 +37,7 @@ pipeline:
                     connectorRef: account.harnessImage
                     delegateSelectors:
                       - docker-delegate-new
+                      - linux-amd64
               - step:
                   name: Check Cypress Version
                   identifier: check_cypress_version
@@ -47,3 +48,4 @@ pipeline:
                     connectorRef: account.harnessImage
                     delegateSelectors:
                       - docker-delegate-new
+                      - linux-amd64
