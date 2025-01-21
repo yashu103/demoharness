@@ -6,9 +6,9 @@ pipeline:
   properties:
     ci:
       codebase:
-        connectorRef: Githubconnect  # Replace with your actual GitHub connector
+        connectorRef: Githubconnect
         repoName: demoharness
-        build: <+input>                # Input field for branch
+        build: <+input>
   stages:
     - stage:
         name: Build Stage
@@ -34,7 +34,6 @@ pipeline:
                   spec:
                     shell: Bash
                     command: node --version
-                    image: node:16  # A Node.js 16 image is used to ensure compatibility
                     connectorRef: account.harnessImage
                     delegateSelectors:
                       - docker-delegate-new
@@ -45,7 +44,6 @@ pipeline:
                   spec:
                     shell: Bash
                     command: cypress --version
-                    image: cypress/included:10.0.0  # Cypress image with version 10.0.0
                     connectorRef: account.harnessImage
                     delegateSelectors:
                       - docker-delegate-new
