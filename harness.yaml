@@ -31,7 +31,6 @@ pipeline:
                   name: Check Node Version
                   identifier: check_node_version
                   spec:
-                    spec: null
                     shell: Bash
                     command: node --version
                     image: node:16
