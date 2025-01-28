@@ -32,7 +32,9 @@ pipeline:
                   identifier: check_node_version
                   spec:
                     shell: Bash
-                    command: node --version
+                    command: |
+                      node --version
+                      npm --version
                     connectorRef: account.harnessImage
                     delegateSelectors:
                       - docker-delegate-latest
