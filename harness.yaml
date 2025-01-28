@@ -1,49 +1,21 @@
 pipeline:
   name: Demo Pipeline Github connect
   identifier: demo_pipeline_github
-  projectIdentifier: default_project
-  orgIdentifier: default
-  properties:
-    ci:
-      codebase:
-        connectorRef: Githubconnect
-        repoName: demoharness
-        build: <+input>
   stages:
     - stage:
-        name: Build Stage
+        name: BuildStage
         identifier: build_stage
-        description: ""
-        type: CI
+        type: Build
         spec:
-          cloneCodebase: true
-          caching:
-            enabled: true
-          platform:
-            os: Linux
-            arch: Amd64
-          runtime:
-            type: Docker
-            spec: {}
           execution:
             steps:
               - step:
-                  name: Check Node Version
-                  identifier: check_node_version
-                  type: Run
+                  name: Clone GitHub Repo
+                  identifier: clone_repo
+                  type: GitClone
                   spec:
-                    shell: Bash
-                    command: node --version
-                    image: node:16
-                    connectorRef: account.harnessImage
-                    delegateSelectors: []
-              - step:
-                  name: Check Cypress Version
-                  identifier: check_cypress_version
-                  type: Run
-                  spec:
-                    shell: Bash
-                    command: cypress --version
-                    image: cypress/included:10.0.0
-                    connectorRef: account.harnessImage
-                    delegateSelectors: []
+                    connectorRef: Githubconnect
+                    repoName: demoharness
+                    branch: main
+                    delegateSelectors: 
+                      - docker-delegate-latest
