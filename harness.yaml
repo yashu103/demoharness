@@ -37,3 +37,14 @@ pipeline:
                     connectorRef: account.harnessImage
                     delegateSelectors:
                       - docker-delegate-latest
+              - step:
+                  type: Run
+                  name: Check Cypress Version
+                  identifier: check_cypress_version
+                  spec:
+                    shell: Bash
+                    command: cypress --version
+                    image: cypress/included:10.0.0
+                    connectorRef: account.harnessImage
+                    delegateSelectors:
+                      - docker-delegate-latest
