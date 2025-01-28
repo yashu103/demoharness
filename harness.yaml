@@ -43,7 +43,6 @@ pipeline:
                   spec:
                     shell: Bash
                     command: cypress --version
-                    image: cypress/included:10.0.0
                     connectorRef: account.harnessImage
                     delegateSelectors:
                       - docker-delegate-latest
