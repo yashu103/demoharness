@@ -33,7 +33,6 @@ pipeline:
                   spec:
                     shell: Bash
                     command: node --version
-                    image: node:16
                     connectorRef: account.harnessImage
                     delegateSelectors:
                       - docker-delegate-latest
