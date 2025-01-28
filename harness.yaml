@@ -1,21 +1,40 @@
 pipeline:
   name: Demo Pipeline Github connect
   identifier: demo_pipeline_github
+  projectIdentifier: default_project
+  orgIdentifier: default
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: Githubconnect
+        repoName: demoharness
+        build: <+input>
   stages:
     - stage:
-        name: BuildStage
-        identifier: build_stage
-        type: Build
+        name: build from two repos
+        identifier: build_from_two_repos
+        description: ""
+        type: CI
         spec:
+          cloneCodebase: true
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
           execution:
             steps:
               - step:
-                  name: Clone GitHub Repo
-                  identifier: clone_repo
-                  type: GitClone
+                  type: Run
+                  name: Check Node Version
+                  identifier: check_node_version
                   spec:
-                    connectorRef: Githubconnect
-                    repoName: demoharness
-                    branch: main
-                    delegateSelectors: 
+                    spec: null
+                    shell: Bash
+                    command: node --version
+                    image: node:16
+                    connectorRef: account.harnessImage
+                    delegateSelectors:
                       - docker-delegate-latest
