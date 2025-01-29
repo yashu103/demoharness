@@ -9,11 +9,11 @@ if [ ! -f package.json ]; then
 fi
 
 #permission
-sudo chmod -R 755 /home/harness/.cache/Cypress/
+#sudo chmod -R 755 /home/harness/.cache/Cypress/
 
 
 # Install Cypress as a dev dependency
-#npm install cypress --save-dev
+npm install cypress --save-dev
 
 # Run Cypress tests
 #npx cypress run --spec "cypress/e2e/basic_test.cy.js"
