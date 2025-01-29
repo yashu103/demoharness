@@ -15,11 +15,16 @@ npm install cypress --save-dev
 sudo chmod -R 755 /home/harness/.cache/Cypress/
 echo "executed permissions"
 
+#listing the directory
+ls -l
+
 #verify is its installed
 npx cypress verify
 echo "its installed"
 
 # Run Cypress tests
-npx cypress run --disable-gpu --spec "cypress/e2e/basic_test.cy.js"
-echo "executed cypress tests"
+DEBUG=cypress:* npx cypress run --spec "cypress/e2e/basic_test.cy.js"
+#npx cypress run
+#--disable-gpu --spec "cypress/e2e/basic_test.cy.js"
+#echo "executed cypress tests"
 #npx cypress run --browser chrome --headless
