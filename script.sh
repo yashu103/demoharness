@@ -8,12 +8,11 @@ if [ ! -f package.json ]; then
     npm init -y
 fi
 
-#permission
-#sudo chmod -R 755 /home/harness/.cache/Cypress/
-
-
 # Install Cypress as a dev dependency
 npm install cypress --save-dev
+
+#permission
+sudo chmod -R 755 /home/harness/.cache/Cypress/
 
 # Run Cypress tests
 #npx cypress run --spec "cypress/e2e/basic_test.cy.js"
