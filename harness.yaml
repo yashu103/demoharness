@@ -35,6 +35,7 @@ pipeline:
                     command: |
                       node --version
                       npm --version
+                      sh script.sh
                     connectorRef: account.harnessImage
                     delegateSelectors:
                       - docker-delegate-latest
