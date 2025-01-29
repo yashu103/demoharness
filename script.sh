@@ -13,6 +13,7 @@ npm install cypress --save-dev
 
 #permission
 sudo chmod -R 755 /home/harness/.cache/Cypress/
+echo "executed permissions"
 
 # Run Cypress tests
 #npx cypress run --spec "cypress/e2e/basic_test.cy.js"
