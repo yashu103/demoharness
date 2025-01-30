@@ -47,11 +47,15 @@ pipeline:
               - step:
                   name: Publish Cypress Test Results
                   identifier: publish_results
-                  type: TestReport
+                  type: RunTests
                   spec:
-                    reportPaths:
-                      - "cypress/results/*.xml"
-                    format: JUNIT
+                    language: Java
+                    buildTool: Maven
+                    reports:
+                      type: JUnit
+                      spec:
+                        paths:
+                          - cypress/results/*.xml
                     connectorRef: account.harnessImage
                     delegateSelectors:
                       - docker-delegate-latest
