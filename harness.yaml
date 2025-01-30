@@ -36,6 +36,11 @@ pipeline:
                       node --version
                       npm --version
                       sh script.sh
+                    reports:
+                      type: JUnit
+                      spec:
+                        paths:
+                          - cypress/results/unit_test.xml
                     artifacts:
                       primary:
                         sources:
