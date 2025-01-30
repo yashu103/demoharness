@@ -36,17 +36,22 @@ pipeline:
                       node --version
                       npm --version
                       sh script.sh
+                    artifacts:
+                      primary:
+                        sources:
+                          - name: Cypress JUnit Reports
+                            path: cypress/results
                     connectorRef: account.harnessImage
                     delegateSelectors:
                       - docker-delegate-latest
               - step:
-                  type: Run
-                  name: Check Cypress Version
-                  identifier: check_cypress_version
+                  name: Publish Cypress Test Results
+                  identifier: publish_results
+                  type: TestReport
                   spec:
-                    shell: Bash
-                    command: cypress --version
-                    image: cypress/included:10.0.0
+                    reportPaths:
+                      - "cypress/results/*.xml"
+                    format: JUNIT
                     connectorRef: account.harnessImage
                     delegateSelectors:
                       - docker-delegate-latest
