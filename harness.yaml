@@ -44,18 +44,3 @@ pipeline:
                     connectorRef: account.harnessImage
                     delegateSelectors:
                       - docker-delegate-latest
-              - step:
-                  name: Publish Cypress Test Results
-                  identifier: publish_results
-                  type: RunTests
-                  spec:
-                    language: Java
-                    buildTool: Maven
-                    reports:
-                      type: JUnit
-                      spec:
-                        paths:
-                          - cypress/results/*.xml
-                    connectorRef: account.harnessImage
-                    delegateSelectors:
-                      - docker-delegate-latest
