@@ -23,7 +23,8 @@ npx cypress verify
 echo "its installed"
 
 # Run Cypress tests
-DEBUG=cypress:* npx cypress run --spec "cypress/e2e/basic_test.cy.js"
+#DEBUG=cypress:* npx cypress run --spec "cypress/e2e/basic_test.cy.js"
+npx cypress run --spec "cypress/e2e/basic_test.cy.js"
 #npx cypress run
 #--disable-gpu --spec "cypress/e2e/basic_test.cy.js"
 #echo "executed cypress tests"
