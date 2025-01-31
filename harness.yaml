@@ -40,7 +40,7 @@ pipeline:
                       type: JUnit
                       spec:
                         paths:
-                          - cypress/results/unit_test.xml
+                          - cypress/results/test-results.xml
                     artifacts:
                       primary:
                         sources:
