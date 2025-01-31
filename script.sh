@@ -27,9 +27,9 @@ echo "its installed"
 mkdir -p cypress/results
 npx cypress run --spec "cypress/e2e/basic_test.cy.js" --reporter junit
 ls -l
-cat test-results.xml
-cp test-results.xml /harness/cypress/results/
-ls -l /harness/cypress/results/
+#cat test-results.xml
+#cp test-results.xml /harness/cypress/results/
+ls -l cypress/results/
 #npx cypress run
 #--disable-gpu --spec "cypress/e2e/basic_test.cy.js"
 #echo "executed cypress tests"
