@@ -6,7 +6,7 @@ module.exports = defineConfig({
     supportFile: false, // Disable support file if not needed
     reporter: "junit", // Enable JUnit reporting
     reporterOptions: {
-      mochaFile: "/harness/cypress/results/test-results.xml", // Output location
+      mochaFile: "cypress/results/test-results.xml", // Output location
       toConsole: true, // Print results in logs
     },
     setupNodeEvents(on, config) {
